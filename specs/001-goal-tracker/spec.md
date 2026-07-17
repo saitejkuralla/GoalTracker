@@ -51,7 +51,8 @@ A user can update a goal's status as work progresses so the current state of eac
 **Acceptance Scenarios**:
 
 1. **Given** an existing goal with a current status, **When** the user updates the goal status to a different valid value, **Then** the goal record is updated and the new status is returned.
-2. **Given** a goal exists, **When** the user attempts to set a status outside the allowed values, **Then** the system rejects the change and preserves the existing status.
+2. **Given** a goal exists, **When** the user updates the status, **Then** the transition MUST follow the sequential lifecycle Active → In Progress → Resolved → Closed.
+3. **Given** a goal exists, **When** the user attempts to set a status outside the allowed values, **Then** the system rejects the change and preserves the existing status.
 
 ---
 
@@ -73,7 +74,8 @@ A user can update a goal's status as work progresses so the current state of eac
 - **FR-006**: The system MUST allow users to view the details of a single goal.
 - **FR-007**: The system MUST allow users to update a goal's status.
 - **FR-008**: The system MUST accept only the defined status values: Active, In Progress, Resolved, Closed.
-- **FR-009**: The system MUST reject invalid or incomplete goal creation requests and preserve the existing record when updates fail.
+- **FR-009**: The system MUST enforce a sequential status lifecycle of Active → In Progress → Resolved → Closed for goal updates.
+- **FR-010**: The system MUST reject invalid or incomplete goal creation requests and preserve the existing record when updates fail.
 
 ## Architecture Constraints *(mandatory)*
 
